@@ -26,47 +26,16 @@ df['Esperance vie Normalisée'] = df['Healthy life expectancy at birth']/(df.loc
 
 df.head(5)
 
-
-# Définition indice bonheur Maxime
-
-df['Bonheur Maxime'] = df['Esperance vie Normalisée']
-df.head(3)
-
+# +
+#Garder que la dernière année pour chaque pays
 # -
 
-import seaborn as sns
-
-df = pd.read_csv('bonheur.csv', sep=';')
-df.head(2)
-
-df['GDP Normalisé'] = df['Log GDP per capita']/(df.loc[df['Log GDP per capita'].argmax(), 'Log GDP per capita'])
-df.head(3)
-
-
-df=pd.read_csv('bonheur.csv',sep=';')
-display(df.head(2))
-
-display(df.columns)
-
-
-
-
-df['christelle']=df['Social support']+df['Generosity']
-df['Generosity'].describe
-
-df['Healthy life expectancy at birth']=pd.to_numeric(df['Healthy life expectancy at birth'],errors='coerce')
-
-df['christelle']=df['Social support']+df['Generosity']+df['Healthy life expectancy at birth']*0.05+df['Freedom to make life choices']-df['Perceptions of corruption']
+#Indice du bonheur
+df['Indice bonheur'] = (df['Social support'] + df['Freedom to make life choices'] + df['Generosity'] + df['Perceptions of corruption'] + df['Positive affect'] + df['GDP Normalisé'] + df['Esperance vie Normalisée'])/7
 df.head(5)
 
+# +
+#Création colonne heureux / pas heureux + donner pays le plus / moins heureux
+# -
 
-country=df.groupby(by='Country name')
-country.size()
-
-ind=df['christelle'].idxmax()
-df.loc[ind]
-
-
-maxi=df['christelle'].max()
-mini=df['christelle'].min()
-print(maxi,mini)
+#Tracés random
