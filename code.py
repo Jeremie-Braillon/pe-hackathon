@@ -12,59 +12,38 @@ import common as c
 import seaborn as sns
 
 # +
+#On ouvre le csv
 df = pd.read_csv('bonheur.csv', sep=';')
+display(df.head(5))
 
+#On corrige les colonnes à la con
 df['Healthy life expectancy at birth'] = pd.to_numeric(df['Healthy life expectancy at birth'], errors = 'coerce')
-df['Healthy life expectancy at birth'].describe()
 
 # +
+#On normalise le GDP et l'espérance de vie
+
 df['GDP Normalisé'] = df['Log GDP per capita']/(df.loc[df['Log GDP per capita'].argmax(), 'Log GDP per capita'])
 df['Esperance vie Normalisée'] = df['Healthy life expectancy at birth']/(df.loc[df['Healthy life expectancy at birth'].argmax(), 'Healthy life expectancy at birth'])
-
-
-# Définition indice bonheur Maxime
-
-df['Bonheur Maxime'] = df['Esperance vie Normalisée']
-df.head(3)
-
+df.head(5)
 # -
 
-import seaborn as sns
-
-df = pd.read_csv('bonheur.csv', sep=';')
-df.head(2)
-
-df['GDP Normalisé'] = df['Log GDP per capita']/(df.loc[df['Log GDP per capita'].argmax(), 'Log GDP per capita'])
-df.head(3)
-
-
-
-display(df.columns)
-
-
-
-
-df['Generosity'].describe
-
-df['Healthy life expectancy at birth']=pd.to_numeric(df['Healthy life expectancy at birth'],errors='coerce')
-df.head(2)
-
-df['indice
-
-
-country=df.groupby(by='Country name')
-country.size()
-
-df.head(5)
-
+#Garder que la dernière année pour chaque pays
+df.columns
 
 # +
-maxi=df['christelle'].max()
-mini=df['christelle'].min()
+#Indice du bonheur
+maxi=df["Indice bonheur"]=df['Indice bonheur'] = (df['Social support'] + df['Freedom to make life choices'] + df['Generosity'] + df['Perceptions of corruption'] + df['Positive affect'] + df['GDP Normalisé'] + df['Esperance vie Normalisée'])/7
+
+                                                                
+
+# +
+#Création colonne heureux / pas heureux + donner pays le plus / moins heureux
+maxi=df["Indice bonheur"].max()
+mini=df["Indice bonheur"].min()
+
+int=(maxi-mini)/3
+ind2=mini+int
+ind3=mini+int*2
+ind4=maxi+1
+
 print(maxi,mini)
-
-
-display(df.head(4))
-# -
-
-
