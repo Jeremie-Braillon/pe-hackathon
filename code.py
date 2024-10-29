@@ -27,6 +27,9 @@ df['Esperance vie Normalisée'] = df['Healthy life expectancy at birth']/(df.loc
 # +
 #Garder que la dernière année pour chaque pays
 
+df.drop_duplicates(subset = 'Country name', keep = 'last', inplace = True)
+df.head()
+
 # +
 #Indice du bonheur 
 
