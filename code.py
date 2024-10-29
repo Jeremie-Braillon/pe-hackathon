@@ -14,6 +14,7 @@ import seaborn as sns
 # +
 #On ouvre le csv
 df = pd.read_csv('bonheur.csv', sep=';')
+display(df.head(5))
 
 #On corrige les colonnes à la con
 df['Healthy life expectancy at birth'] = pd.to_numeric(df['Healthy life expectancy at birth'], errors = 'coerce')
@@ -23,12 +24,39 @@ df['Healthy life expectancy at birth'] = pd.to_numeric(df['Healthy life expectan
 
 df['GDP Normalisé'] = df['Log GDP per capita']/(df.loc[df['Log GDP per capita'].argmax(), 'Log GDP per capita'])
 df['Esperance vie Normalisée'] = df['Healthy life expectancy at birth']/(df.loc[df['Healthy life expectancy at birth'].argmax(), 'Healthy life expectancy at birth'])
+df.head(5)
+# -
 
-# +
 #Garder que la dernière année pour chaque pays
+df.columns
 
 # +
-#Indice du bonheur 
+#Indice du bonheur
+maxi=df["Indice bonheur"]=df['Indice bonheur'] = (df['Social support'] + df['Freedom to make life choices'] + df['Generosity'] + df['Perceptions of corruption'] + df['Positive affect'] + df['GDP Normalisé'] + df['Esperance vie Normalisée'])/7
+
+                                                                
 
 # +
 #Création colonne heureux / pas heureux + donner pays le plus / moins heureux
+maxi=df["Indice bonheur"].max()
+mini=df["Indice bonheur"].min()
+
+int=(maxi-mini)/3
+ind2=mini+int
+ind3=mini+int*2
+ind4=maxi+1
+
+print(maxi,mini)
+print(int)
+print(ind2,ind3,ind4)
+df['pays heureux']=pd.cut(df["Indice bonheur"], bins=[0,ind2,ind3,ind4], labels=['pas heureux','moyen','heureux'])
+df.head(4)
+
+
+
+# -
+
+happy=df.groupby(by='pays heureux')
+happy.size()
+
+
