@@ -24,6 +24,8 @@ df['Healthy life expectancy at birth'] = pd.to_numeric(df['Healthy life expectan
 df['GDP Normalisé'] = df['Log GDP per capita']/(df.loc[df['Log GDP per capita'].argmax(), 'Log GDP per capita'])
 df['Esperance vie Normalisée'] = df['Healthy life expectancy at birth']/(df.loc[df['Healthy life expectancy at birth'].argmax(), 'Healthy life expectancy at birth'])
 
+df.head(5)
+
 
 # Définition indice bonheur Maxime
 
