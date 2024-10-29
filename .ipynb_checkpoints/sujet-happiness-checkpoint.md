@@ -1,11 +1,3 @@
-```python
-
-```
-
-```python
-
-```
-
 # Le bonheur
 
 ## sujet
