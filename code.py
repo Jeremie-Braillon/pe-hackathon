@@ -15,3 +15,8 @@ df.head(2)
 
 df['GDP Normalisé'] = df['Log GDP per capita']/(df.loc[df['Log GDP per capita'].argmax(), 'Log GDP per capita'])
 df.head(3)
+
+df['Life expectancy Normalisé'] = (pd.to_numeric(df['Healthy life expectancy at birth']))/pd.to_numeric(pd.to_numeric(df.loc(df['Healthy life expectancy at birth'])).argmax(), 'Healthy life expectancy at birth'])
+df.head(3)
+
+
