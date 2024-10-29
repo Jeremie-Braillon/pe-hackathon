@@ -24,11 +24,19 @@ df['Healthy life expectancy at birth'] = pd.to_numeric(df['Healthy life expectan
 df['GDP Normalisé'] = df['Log GDP per capita']/(df.loc[df['Log GDP per capita'].argmax(), 'Log GDP per capita'])
 df['Esperance vie Normalisée'] = df['Healthy life expectancy at birth']/(df.loc[df['Healthy life expectancy at birth'].argmax(), 'Healthy life expectancy at birth'])
 
-# +
-#Garder que la dernière année pour chaque pays
+df.head(5)
 
 # +
-#Indice du bonheur 
+#Garder que la dernière année pour chaque pays
+# -
+
+#Indice du bonheur
+df['Indice bonheur'] = (df['Social support'] + df['Freedom to make life choices'] + df['Generosity'] + df['Perceptions of corruption'] + df['Positive affect'] + df['GDP Normalisé'] + df['Esperance vie Normalisée'])/7
+df.head(5)
 
 # +
 #Création colonne heureux / pas heureux + donner pays le plus / moins heureux
+# -
+
+#Tracés random
+
