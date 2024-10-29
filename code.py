@@ -12,12 +12,15 @@ import common as c
 import seaborn as sns
 
 # +
+#On ouvre le csv
 df = pd.read_csv('bonheur.csv', sep=';')
 
+#On corrige les colonnes à la con
 df['Healthy life expectancy at birth'] = pd.to_numeric(df['Healthy life expectancy at birth'], errors = 'coerce')
-df['Healthy life expectancy at birth'].describe()
 
 # +
+#On normalise le GDP et l'espérance de vie
+
 df['GDP Normalisé'] = df['Log GDP per capita']/(df.loc[df['Log GDP per capita'].argmax(), 'Log GDP per capita'])
 df['Esperance vie Normalisée'] = df['Healthy life expectancy at birth']/(df.loc[df['Healthy life expectancy at birth'].argmax(), 'Healthy life expectancy at birth'])
 
@@ -30,13 +33,13 @@ df.head(3)
 # -
 
 import seaborn as sns
->>>>>>> c080b08dfc4bb35205c220e570d2cbb4b54ce61e
 
 df = pd.read_csv('bonheur.csv', sep=';')
 df.head(2)
 
 df['GDP Normalisé'] = df['Log GDP per capita']/(df.loc[df['Log GDP per capita'].argmax(), 'Log GDP per capita'])
 df.head(3)
+
 
 df=pd.read_csv('bonheur.csv',sep=';')
 display(df.head(2))
@@ -65,4 +68,3 @@ df.loc[ind]
 maxi=df['christelle'].max()
 mini=df['christelle'].min()
 print(maxi,mini)
-
