@@ -44,18 +44,25 @@ display(df.columns)
 
 
 
+df['christelle']=df['Social support']+df['Generosity']
 df['Generosity'].describe
 
 df['Healthy life expectancy at birth']=pd.to_numeric(df['Healthy life expectancy at birth'],errors='coerce')
 df.head(2)
 
-df['indice
+# +
+
+
+df['christelle']=df['Social support']+df['Generosity']+df['Healthy life expectancy at birth']*0.05+df['Freedom to make life choices']-df['Perceptions of corruption']
+df.head(5)
+# -
 
 
 country=df.groupby(by='Country name')
 country.size()
 
-df.head(5)
+ind=df['christelle'].idxmax()
+df.loc[ind]
 
 
 # +
