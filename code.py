@@ -10,7 +10,8 @@ import pandas as pd
 import numpy as np
 import common as c
 
+df = pd.read_csv('bonheur.csv', sep=';')
+df.head(2)
 
-
-
-df = pd.read_csv("bonheur.csv")
+df['GDP Normalisé'] = df['Log GDP per capita']/(df.loc[df['Log GDP per capita'].argmax(), 'Log GDP per capita'])
+df.head(3)
