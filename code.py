@@ -28,6 +28,7 @@ df.head(5)
 # -
 
 #Garder que la dernière année pour chaque pays
+df2 = df.drop_duplicates(subset = 'Country name', keep = 'last')
 # -
 
 #Indice du bonheur
