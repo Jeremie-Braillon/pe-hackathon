@@ -28,13 +28,11 @@ df.head(5)
 # -
 
 #Garder que la dernière année pour chaque pays
-df.columns
+# -
 
-# +
 #Indice du bonheur
-maxi=df["Indice bonheur"]=df['Indice bonheur'] = (df['Social support'] + df['Freedom to make life choices'] + df['Generosity'] + df['Perceptions of corruption'] + df['Positive affect'] + df['GDP Normalisé'] + df['Esperance vie Normalisée'])/7
-
-                                                                
+df['Indice bonheur'] = (df['Social support'] + df['Freedom to make life choices'] + df['Generosity'] + df['Perceptions of corruption'] + df['Positive affect'] + df['GDP Normalisé'] + df['Esperance vie Normalisée'])/7
+df.head(5)
 
 # +
 #Création colonne heureux / pas heureux + donner pays le plus / moins heureux
